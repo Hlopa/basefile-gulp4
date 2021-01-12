@@ -1,19 +1,19 @@
 
-const {src, dest, watch, parallel, series} = require("gulp");
-const scss = require("gulp-sass");
-const concat = require("gulp-concat");
-const browserSync = require('browser-sync').create();
-const uglify = require('gulp-uglify-es').default;
-const autoprefixer = require('gulp-autoprefixer');
-const imagemin = require('gulp-imagemin');
-const del = require("del");
+const {src, dest, watch, parallel, series} = require("gulp"),
+    scss = require("gulp-sass"),
+    concat = require("gulp-concat"),
+    browserSync = require('browser-sync').create(),
+    uglify = require('gulp-uglify-es').default,
+    autoprefixer = require('gulp-autoprefixer'),
+    imagemin = require('gulp-imagemin'),
+    del = require("del");
 
 
 function browsersync(){
     browserSync.init({
-        server:{
-            baseDir: "app/"
-        }
+        server:{baseDir: "app/"},
+        notify: false,      //отключает всплывающее уведомление в браузере
+        online: true    //раздает IP адреса, но не может работать без интернета. Для офлайн режима пишем false
     })
 }
 
