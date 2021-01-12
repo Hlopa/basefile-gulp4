@@ -43,17 +43,7 @@ function js(){
 
 function images(){
     return src('app/images/**/*')
-    .pipe(imagemin([
-        imagemin.gifsicle({interlaced: true}),
-        imagemin.mozjpeg({quality: 85, progressive: true}),
-        imagemin.optipng({optimizationLevel: 3}), // от 0 до 7
-        imagemin.svgo({
-            plugins: [
-                {removeViewBox: true},
-                {cleanupIDs: false}
-            ]
-        })
-    ]))
+    .pipe(imagemin())
     .pipe(dest('dist/images'))
 }
 
