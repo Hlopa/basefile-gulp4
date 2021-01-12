@@ -5,6 +5,7 @@ const {src, dest, watch, parallel, series} = require("gulp"),
     browserSync = require('browser-sync').create(),
     uglify = require('gulp-uglify-es').default,
     autoprefixer = require('gulp-autoprefixer'),
+    group_media = require('gulp-group-css-media-queries'),
     imagemin = require('gulp-imagemin'),
     del = require("del");
 
@@ -21,6 +22,7 @@ function style(){
     return src('app/scss/style.scss')
     .pipe(scss({outputStyle: 'compressed'})) //expanded //конвертирует в css и сжимает
     .pipe(concat('style.min.css'))  //может конкатенировать и переименовывать файлы
+    .pipe(group_media())
     .pipe(autoprefixer({
         overrideBrowserslist: ["last 10 version"], //8
         grid: true
