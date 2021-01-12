@@ -76,7 +76,7 @@ function cleanDist(){
 
 function watching(){
     watch(['app/scss/**/*.scss'], style) //следит за файлами и запускает style если засекает изменения
-    watch(['app/js/main.js'], js)
+    watch(['app/js/**/*.js', '!app/**/*.min.js'], js)
     watch(['app/*.html']).on('change', browserSync.reload)
 }
 
