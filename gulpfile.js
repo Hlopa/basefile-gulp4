@@ -22,7 +22,7 @@ function style(){
     .pipe(scss({outputStyle: 'compressed'})) //expanded //конвертирует в css и сжимает
     .pipe(concat('style.min.css'))  //может конкатенировать и переименовывать файлы
     .pipe(autoprefixer({
-        overrideBrowserslist: ["last 8 version"], //10
+        overrideBrowserslist: ["last 10 version"], //8
         grid: true
     }))
     .pipe(dest('app/css'))
@@ -89,5 +89,5 @@ exports.browsersync = browsersync;
 exports.cleanDist = cleanDist;
 
 
-exports.default = parallel(browsersync, watching); //задаем дефолтную задачу для gulp
+exports.default = parallel(style, js, browsersync, watching); //задаем дефолтную задачу для gulp
 exports.build = series(cleanDist, images, build);
